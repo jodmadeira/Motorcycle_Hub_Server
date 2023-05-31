@@ -13,25 +13,25 @@ This is an app for motorcycle riders. For them to share their learnings connect 
 ## User Stories
 
 -  **404:** As a user I get to see a 404 page with a feedback message if I try to reach a page that does not exist so that I know it's my fault.
--  **Signup:** As an anonymous user I can sign up on the platform so that I can start creating and managing tournaments.
--  **Login:** As a user I can login to the platform so that I can access my profile and start creating and managing tournaments.
+-  **Signup:** As an anonymous user I can sign up on the platform so  and create a user account.
+-  **Login:** As a user I can login to the platform so that I can access my profile and search the app content.
 -  **Logout:** As a logged in user I can logout from the platform so no one else can use it.
--  **Profile Page**: As a logged in user I can visit my profile page so that I can access the edit page and see the list of tournaments I have created.
--  **Add Tournaments:** As a logged in user I can access the add tournament page so that I can create a new tournament.
--  **Edit Tournaments:** As a logged in user I can access the edit tournament page so that I can edit the tournament I created.
--  **Add Players:** As a user I can add players to a tournament.
--  **View Tournament Table:** As a user I want to see the tournament details, players list and the time table.
--  **View Ranks:** As a user I can see the rankings list for the tournament.
+-  **Profile Page**: As a logged in user I can visit my profile page so that I can access the edit page and my motorcycles, my Marketplace offers and requests and my trips.
+-  **Add Motorcycle:** As a logged in user I can access the add motorcycle page so that I can create a new motorcycle.
+-  **Edit Motorcycles Details:** As a logged in user I can access the edit motorcycle details page so that I can edit the motorcycle details received from the API (stock specs).
+-  **Add Products/Services:** As a user I can add products or services to the marketplace and will see them in my user page.
+-  **Edit Products/Services:** As a user I can see my products and services offered and requested in my user page and edit them.
+-  **View Motorcycles List:** As a user I can see the List of motorcycle makers and respective models.
 
 
 
 
 ## Backlog
-
+- Maketplace card categories (parts/equipment/tech/etc...)
 - Events Page
 - Plan your Trip section
 - Loading effects
-- Add geolocation to events when creating
+- Add geolocation to events when creating them
 
 
 <br>
@@ -41,18 +41,20 @@ This is an app for motorcycle riders. For them to share their learnings connect 
 
 ## React Router Routes (React App)
 
-| Path                         | Component            | Permissions                | Behavior                                                  |
+| Path                         | Component/Page       | Permissions                | Behavior                                                  |
 | ---------------------------- | -------------------- | -------------------------- | --------------------------------------------------------- |
 | `/login`                     | LoginPage            | anon only `<AnonRoute>`    | Login form, navigates to home page after login.           |
 | `/signup`                    | SignupPage           | anon only  `<AnonRoute>`   | Signup form, navigates to home page after signup.         |
 | `/`                          | HomePage             | public `<Route>`           | Home page.                                                |
 | `/user-profile`              | ProfilePage          | user only `<PrivateRoute>` | User and player profile for the current user.             |
 | `/user-profile/edit`         | EditProfilePage      | user only `<PrivateRoute>` | Edit user profile form.                                   |
-| `/tournaments/add`           | CreateTournamentPage | user only `<PrivateRoute>` | Create new tournament form.                               |
-| `/tournaments`               | TournamentListPage   | user only `<PrivateRoute>` | Tournaments list.                                         |
-| `/tournaments/:tournamentId` | TournamentDetailPage | user only `<PrivateRoute>` | Tournament details. Shows players list and other details. |
-| `/tournament/players/:id`    | PlayerDetailsPage    | user only `<PrivateRoute>` | Single player details.                                    |
-| `/rankings/:tournamentId`    | RankingsPage         | user only `<PrivateRoute>` | Tournament rankings list.                                 |
+| `/motorcycle/add`            | CreateTournamentPage | user only `<PrivateRoute>` | Create new motorcycle form.                               |
+| `/brands`                    | MotorcycleMakersList | public `<Route>`           | Tournaments list.                                         |
+| `/:brandName`                | MotorcycleMakersList | public `<Route>`           | Tournaments list.                                         |
+| `/:brandName/:modelName`     | MotorcycleMakersList | public `<Route>`           | Tournaments list.                                         |
+| `/marketplace`               | MarketPlaceList      | public `<Route>`           | Tournament details. Shows players list and other details. |
+| `/marketplace/:cardId`       | MaketplaceCardDetails| user only `<PrivateRoute>` | Tournament details. Shows players list and other details. |
+| `/marketplace/create`        | AddProduct/Service   | user only `<PrivateRoute>` | Tournament details. Shows players list and other details. |
 
 
 
@@ -77,6 +79,8 @@ Pages:
 
 - MotorcycleDetails
 
+- MotorcycleMakersList
+
 - MotorcycleModelDetails
 
 - AddProduct/Service
@@ -84,6 +88,8 @@ Pages:
 - EditProduct/Service
 
 - MarketPlaceList
+
+- MaketplaceCardDetails
 
   
 
@@ -112,19 +118,21 @@ Components:
     - `.updateCurrentUser(id, userData)`
     - `.getCurrentUser()`
 
-- **Tournament Service**
+- **Motorcycle Service**
 
-  - `tournamentService` :
-    - `.addTournament(tournamentData)`
-    - `.getTournaments()`
-    - `.getOneTournament(id)`
-    - `.deleteTournament(id)`
+  - `motorcycleService` :
+    - `.addMotorcycle(motorcycleData)`
+    - `.getMakers()`
+    - `.getOneMotorcycle(id)`
+    - `.deleteMotorcycle(id)`
 
-- **Player Service**
+- **Marketplace Service**
 
-  - `playerService` :
-    - `.createPlayer(id)`
-    - `.getPlayerDetails(id)`
+  - `MarketplaceService` :
+    - `.createCard(id)`
+    - `.getCardDetails(id)`
+    - `.editCardDetails(id)`
+    - `.deleteCardDetails(id)`
 
   
 
@@ -144,35 +152,67 @@ Components:
 {
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-	playerProfile: { type: Schema.Types.ObjectId, ref:'Player' },
-  createdTournaments: [ { type: Schema.Types.ObjectId, ref:'Tournament' } ]
+  username: { type: String,required: true};
+  bio: { type: String}
+  profileImg: { type:String}
 }
 ```
 
 
-
-**Tournament model**
+**Motorcycle Brand model**
 
 ```javascript
  {
    name: { type: String, required: true },
-   img: { type: String },
-   players: [ { type: Schema.Types.ObjectId, ref:'Player' } ],
-   games: [],
-   rankings: []
+   url: { type: String, required: true},
+   img: { type: String, required: true },
+   motorcycleModels: [ { type: Schema.Types.ObjectId, ref:'Models' } ],
  }
 ```
 
 
 
-**Player model**
+**Motorcycle Models model**
 
 ```javascript
 {
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  profileImage: { type: String },
-  scores: []
+  name: { type: String, required: true },
+  brand: { type: String, required: true },
+  img: { type: String },
+  details:{details list}
+  
+}
+```
+**Users Motorcycle model**
+
+```javascript
+{
+
+  nickname: { type: String, required: true },
+  modelName: { type: String, required: true },
+  brand: { type: String, required: true },
+  img: { type: String },
+  owner:{type: Schema.Types.ObjectId, ref:'User' }
+  details:{details list}
+  
+}
+```
+
+**Card model**
+
+```javascript
+{
+  cardType: { type: String, required: true },
+  contentType: { type: String, required: true },
+  title: { type: String, required: true },
+  description: { type: String, required: true },
+  price: { type: Number, required: true },
+  priceMin:{type: Number},
+  priceMax:{type: Number}
+  img: { type: String },
+  owner:{type: Schema.Types.ObjectId, ref:'User' }
+  url:{type: String}
+  
 }
 ```
 
@@ -190,15 +230,15 @@ Components:
 | POST        | `/auth/signup`         | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
 | POST        | `/auth/login`          | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
 | POST        | `/auth/logout`         |                              | 204            | 400          | Logs out the user                                            |
-| GET         | `/api/tournaments`     |                              |                | 400          | Show all tournaments                                         |
-| GET         | `/api/tournaments/:id` |                              |                |              | Show specific tournament                                     |
-| POST        | `/api/tournaments`     | { name, img, players }       | 201            | 400          | Create and save a new tournament                             |
-| PUT         | `/api/tournaments/:id` | { name, img, players }       | 200            | 400          | edit tournament                                              |
-| DELETE      | `/api/tournaments/:id` |                              | 201            | 400          | delete tournament                                            |
-| GET         | `/api/players/:id`     |                              |                |              | show specific player                                         |
-| POST        | `/api/players`         | { name, img, tournamentId }  | 200            | 404          | add player                                                   |
-| PUT         | `/api/players/:id`     | { name, img }                | 201            | 400          | edit player                                                  |
-| DELETE      | `/api/players/:id`     |                              | 200            | 400          | delete player                                                |
+| GET         | `/api/motorcycle`      |                              |                | 400          | Show all motorcycle                                         |
+| GET         | `/api/motorcycle/:id`  |                              |                |              | Show specific tournament                                     |
+| POST        | `/api/motorcycle`      | { name, img, players }       | 201            | 400          | Create and save a new tournament                             |
+| PUT         | `/api/motorcycle/:id`  | { name, img, players }       | 200            | 400          | edit tournament                                              |
+| DELETE      | `/api/motorcycle/:id`  |                              | 201            | 400          | delete tournament                                            |
+| GET         | `/api/cards/:id`       |                              |                |              | show specific player                                         |
+| POST        | `/api/cards`           | { name, img, tournamentId }  | 200            | 404          | add player                                                   |
+| PUT         | `/api/cards/:id`       | { name, img }                | 201            | 400          | edit player                                                  |
+| DELETE      | `/api/cards/:id`       |                              | 200            | 400          | delete player                                                |
 | GET         | `/api/games`           |                              | 201            | 400          | show games                                                   |
 | GET         | `/api/games/:id`       |                              |                |              | show specific game                                           |
 | POST        | `/api/games`           | {player1,player2,winner,img} |                |              | add game                                                     |
@@ -212,32 +252,31 @@ Components:
 <br>
 
 ## Packages
+Axios
 
+Material UI
 <br>
 
 
 ## Links
 
-### Trello/Kanban
-
-[Link to your trello board](https://trello.com/b/PBqtkUFX/curasan) or a picture of your physical board
 
 ### Git
 
 The url to your repository and to your deployed project
 
-[Client repository Link](https://github.com/screeeen/project-client)
+[Client repository Link](https://github.com/FranciscoCrespo91/Motorcycle_Hub_Client)
 
-[Server repository Link](https://github.com/screeeen/project-server)
+[Server repository Link](https://github.com/jodmadeira/Motorcycle_Hub_Server)
 
-[Deployed App Link](http://heroku.com)
+[Deployed App Link] TBD
 
 ### Slides
 
-[Slides Link](http://slides.com) - The url to your *public* presentation slides
+TBD
 
 ### Contributors
 
-FirstName LastName - <github-username> - <linkedin-profile-link>
+Francisco Crespo - github/FranciscoCrespo91 - linkedin/francisco-crespo-m1991
 
-FirstName LastName - <github-username> - <linkedin-profile-link>
+João Madeira - github/jodmadeira - linkedin/joaoddmadeira
