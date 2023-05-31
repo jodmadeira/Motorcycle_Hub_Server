@@ -8,7 +8,7 @@
 
 ## Description
 
-This is an app to manage unofficial tournaments within communities. The app helps to organize, manage and track competitions.
+This is an app for motorcycle riders. For them to share their learnings connect with other riders and buy and sell products and services.
 
 ## User Stories
 
@@ -28,10 +28,10 @@ This is an app to manage unofficial tournaments within communities. The app help
 
 ## Backlog
 
-- Add weather widget
-- lottie interactions
-- users can bet
-- add geolocation to events when creating
+- Events Page
+- Plan your Trip section
+- Loading effects
+- Add geolocation to events when creating
 
 
 <br>
@@ -71,27 +71,29 @@ Pages:
 
 - EditProfilePage
 
-- CreateTournamentPage
+- AddMotorcycle
 
-- TournamentListPage
+- EditMotorcycle
 
-- TournamentDetailsPage
+- MotorcycleDetails
 
-- PlayerDetailsPage
+- MotorcycleModelDetails
 
-- RankingsPage
+- AddProduct/Service
+
+- EditProduct/Service
+
+- MarketPlaceList
 
   
 
 Components:
 
-- PlayerCard
-- TournamentCard
 - Navbar
-
-
-
-
+- MotorcycleCard
+- MakerCard
+- ProductCard
+- Service Card
 
 
 ## Services
