@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const mongoose = require('mongoose');
 
-// Require the Cards model in order to interact with the database
+// Require the Cards model to interact with the database
 const Cards = require('../models/Cards.model');
 
 
@@ -15,6 +15,18 @@ router.get('/marketplace', async (req, res)=>{
         res.json(error)
     }
 });
+
+//Get a specific Card
+router.get('/marketplace/:cardId', async(req,res)=>{
+    const {cardId} = req.params;
+    try {
+        let getCard = await Cards.findById(cardId);
+        res.json(getCard);
+    }
+    catch (error) {
+        res.json(error)
+    }
+})
 
 
 // Create new Card (offer or request);
