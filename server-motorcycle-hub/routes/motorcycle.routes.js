@@ -17,27 +17,27 @@ const motorcycleMakers =["Honda","Kawasaki","Harley-Davidson","Indian","KTM","Hu
             }}
             )
             const motorcycleData = apiCall.data
-
+            console.log(motorcycleData[0])
             for(let motorcycle of motorcycleData){
-
+                    console.log('here',brand)
                 await Motorcycles.create({
-                    make: motorcycle.make,
+                    brand: brand,
                     model: motorcycle.model,
                     year: motorcycle.year,
                     type: motorcycle.type,
                     engine: motorcycle.engine,
                     power: motorcycle.power,
-                    boreStroke: motorcycle.boreStroke,
+                    boreStroke: motorcycle.bore_stroke,
                     gearbox: motorcycle.gearbox,
-                    fuelCapacity:motorcycle.fuelCapacity,
-                    frontSuspension: motorcycle.frontSuspension,
-                    rearSuspension: motorcycle.rearSuspension,
-                    frontTire: motorcycle.frontTire,
-                    rearTire: motorcycle.rearTire,
-                    frontBrakes: motorcycle.frontBrakes,
-                    rearBrakes: motorcycle.rearBrakes,
-                    Weight: motorcycle.dryWeight,
-                    Height: motorcycle.seatHeight
+                    fuelCapacity:motorcycle.fuel_capacity,
+                    frontSuspension: motorcycle.front_suspension,
+                    rearSuspension: motorcycle.rear_suspension,
+                    frontTire: motorcycle.front_tire,
+                    rearTire: motorcycle.rear_tire,
+                    frontBrakes: motorcycle.front_brakes,
+                    rearBrakes: motorcycle.rear_brakes,
+                    weight: motorcycle.dry_weight,
+                    height: motorcycle.seat_height
                 })
             }
     }
@@ -63,7 +63,17 @@ router.get('/motorcycles', async (req,res)=>{
 })
 
 //Get a specific motorcycle
-router.get('/')
+router.get('/motorcycles/:brand', async (req,res)=>{
+    const{brand}=req.params
+    try {
+        console.log(brand)
+        let allBrandMotorcycles = await Motorcycles.find({brand:brand})
+    res.json(allBrandMotorcycles)
+    }
+    catch (error) {
+        res.json(error)
+    }
+})
 
 
 

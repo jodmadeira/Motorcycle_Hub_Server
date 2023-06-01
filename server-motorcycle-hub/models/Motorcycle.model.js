@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const motorcycleSchema = new Schema(
     {   
-        make: {type: String},
+        brand: {type: String},
         makeImg:{type: String},
         model:{type: String},
         modelImg:{type: String},
@@ -19,8 +19,8 @@ const motorcycleSchema = new Schema(
         rearTire: {type: String},
         frontBrakes: {type: String},
         rearBrakes: {type: String},
-        Weight: {type: String},
-        Height: {type: String},
+        weight: {type: String},
+        height: {type: String},
     },
   
     )
