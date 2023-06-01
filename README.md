@@ -239,10 +239,6 @@ Components:
 | POST        | `/api/cards`           | { name, img, tournamentId }  | 200            | 404          | add player                                                   |
 | PUT         | `/api/cards/:id`       | { name, img }                | 201            | 400          | edit player                                                  |
 | DELETE      | `/api/cards/:id`       |                              | 200            | 400          | delete player                                                |
-| GET         | `/api/games`           |                              | 201            | 400          | show games                                                   |
-| GET         | `/api/games/:id`       |                              |                |              | show specific game                                           |
-| POST        | `/api/games`           | {player1,player2,winner,img} |                |              | add game                                                     |
-| PUT         | `/api/games/:id`       | {winner,score}               |                |              | edit game                                                    |
 
 
 <br>
