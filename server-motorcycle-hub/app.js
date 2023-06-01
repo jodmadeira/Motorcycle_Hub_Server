@@ -24,6 +24,9 @@ app.use("/api", authRoutes);
 const cardsRoutes = require("./routes/cards.routes");
 app.use("/api", cardsRoutes);
 
+const motorcycleRoutes = require("./routes/motorcycle.routes");
+app.use("/api", motorcycleRoutes);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
