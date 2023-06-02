@@ -49,10 +49,11 @@ const userMotorcycleSchema = new Schema(
         rearBrakes: {type: String},
         weight: {type: String},
         height: {type: String},
-
-        price:{
-            type:String
+        isForSale: {
+            type: Boolean,
+            default:false
         },
+        price:{type:String},
         cardId:{
             type: Schema.Types.ObjectId,
             ref:'Cards'

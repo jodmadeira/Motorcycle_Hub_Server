@@ -18,10 +18,19 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Name is required."],
     },
+    bio: {
+      type:String
+    },
     motorcycles:[
       {
       type:Schema.Types.ObjectId,
       ref:'UserMotorcycles'
+      }
+    ],
+    cards:[
+      {
+      type:Schema.Types.ObjectId,
+      ref:'Cards'
       }
     ]
   },

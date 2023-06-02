@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 
 // Require the Cards model to interact with the database
 const Cards = require('../models/Cards.model');
+const User = require ('../models/User.model');
 
 
 // Get All the marketplace cards (offer and request);
@@ -32,11 +33,13 @@ router.get('/marketplace/:cardId', async(req,res)=>{
 
 
 // Create new Card (offer or request);
-router.post('/marketplace/create', async (req,res)=>{
+router.post('/marketplace/:ownerId/create', async (req,res)=>{
+    const {ownerId} = req.params;
     const {cardType, contentType, title, description, img, link, price} = req.body
     try {
         let createCard = await Cards.create({cardType, contentType, title, description, img, link, price});
         res.json(createCard)
+        await User.findByIdAndUpdate(ownerId, {$push:{cards:createdCard._id}})
     }
     catch(error) {
         res.json(error)

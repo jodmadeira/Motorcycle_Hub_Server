@@ -26,16 +26,17 @@ router.post("/signup", (req, res, next) => {
     return;
   }
 
-  // This regular expression check that the email is of a valid format
+  /* // This regular expression check that the email is of a valid format
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
   if (!emailRegex.test(email)) {
     res.status(400).json({ message: "Provide a valid email address." });
     return;
-  }
+  } */
 
   // This regular expression checks password for special characters and minimum length
   const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
   if (!passwordRegex.test(password)) {
+    console.log(password)
     res.status(400).json({
       message:
         "Password must have at least 6 characters and contain at least one number, one lowercase and one uppercase letter.",
@@ -111,6 +112,7 @@ router.post("/login", (req, res, next) => {
 
         // Send the token as the response
         res.status(200).json({ authToken: authToken });
+        console.log(req.payload)
       } else {
         res.status(401).json({ message: "Unable to authenticate the user" });
       }
