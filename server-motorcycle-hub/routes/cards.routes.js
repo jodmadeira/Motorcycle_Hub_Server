@@ -7,6 +7,7 @@ const Cards = require('../models/Cards.model');
 
 // Get All the marketplace cards (offer and request);
 router.get('/marketplace', async (req, res)=>{
+    console.log('/marketplace',req.params)
     try {
         let getAllCards = await Cards.find();
         res.json(getAllCards)
@@ -19,6 +20,7 @@ router.get('/marketplace', async (req, res)=>{
 //Get a specific Card
 router.get('/marketplace/:cardId', async(req,res)=>{
     const {cardId} = req.params;
+    console.log('/:cardId',req.params)
     try {
         let getCard = await Cards.findById(cardId);
         res.json(getCard);
