@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const motorcycleSchema = new Schema(
     {   
         brand: {type: String},
-        makeImg:{type: String},
+        brandImg:{type: String},
         model:{type: String},
         modelImg:{type: String},
         year:{type: String},

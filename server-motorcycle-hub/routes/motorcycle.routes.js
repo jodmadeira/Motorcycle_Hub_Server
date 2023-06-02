@@ -19,9 +19,37 @@ const motorcycleMakers =["Honda","Kawasaki","Harley-Davidson","Indian","KTM","Hu
             const motorcycleData = apiCall.data
             console.log(motorcycleData[0])
             for(let motorcycle of motorcycleData){
-                    console.log('here',brand)
+                    
+                let img = "";
+                let brandLogo= {brand}
+                switch (brand){
+
+                    case "Kawasaki":
+                        img="./public/images/brand/Kawasaki.png"
+                        break;                        
+                    case "Honda":
+                        img="./public/images/brand/Honda.png"
+                        break;
+                    case "Harley-Davidson":
+                        img="./public/images/brand/Harley_Davidson.png"
+                        break;
+                    case "Indian":
+                        img="./public/images/brand/Indian_Motorcycle.png"
+                        break;
+                    case "KTM":
+                        img="./public/images/brand/KTM.png"
+                        break;
+                    case "Husqvarna":
+                        img="./public/images/brand/Husqvarna.png"
+                        break;
+                    
+                    default:img="./public/images/brand/Default_Icon.png" ;
+                }
+                
+
                 await Motorcycles.create({
                     brand: brand,
+                    brandImg: img,
                     model: motorcycle.model,
                     year: motorcycle.year,
                     type: motorcycle.type,
