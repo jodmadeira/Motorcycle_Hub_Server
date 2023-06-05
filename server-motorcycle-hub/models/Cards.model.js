@@ -25,6 +25,7 @@ const cardsSchema = new Schema(
         },
         link: {
             type: String,
+            default: 'Not provided'
         },
         price: {
             type: String,
