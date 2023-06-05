@@ -49,7 +49,7 @@ router.post('/marketplace/:ownerId/create', async (req,res)=>{
 
 // Update a User Card (offer or request);
 router.put('/marketplace/edit/:cardId', async(req,res)=>{
-    const {cardId}=req.params;
+    const {cardId}=req.payload._id;
     const {cardType, contentType, title, description, img, link, price} = req.body
    
     try {
