@@ -7,9 +7,8 @@ router.get('/profile/:id', async (req,res)=>{
    try {
        const id = req.params.id;
     
-       const getUserDetails = await User.findById(id).populate(motorcycles, cards)
-       const {name, email, img, bio, motorcycles, cards} = getUserDetails;
-       res.json({name, email, img, bio, motorcycles, cards})
+       const getUserDetails = await User.findById(id)
+       res.json(getUserDetails)
    }
    catch(error){
         console.log('Error geting UserInformation from DB', error)
