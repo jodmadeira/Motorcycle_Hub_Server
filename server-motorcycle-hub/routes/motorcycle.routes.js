@@ -145,7 +145,7 @@ router.get('/motorcycles', async (req,res)=>{
     
 })
 
-//Get a specific motorcycle
+//Get all motorcycle models from a specific brand
 router.get('/motorcycles/:brand', async (req,res)=>{
     const{brand}=req.params
     try {

@@ -18,8 +18,13 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Name is required."],
     },
+    img:{
+      type:String,
+      default:'https://th.bing.com/th/id/OIP.JZBTJtNF8UwcrOQhh-UgogAAAA?pid=ImgDet&rs=1'
+    },
     bio: {
-      type:String
+      type:String,
+      default:''
     },
     motorcycles:[
       {

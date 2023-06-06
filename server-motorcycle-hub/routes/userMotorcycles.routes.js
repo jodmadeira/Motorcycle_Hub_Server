@@ -7,7 +7,7 @@ const UserMotorcycles = require('../models/UserMotorcycle.model');
 const User = require('../models/User.model');
 
 //Create a Motorcycle
-router.post('/:ownerId/motorcycle/create', async (req,res)=>{
+router.post('/motorcycle/create/:ownerId', async (req,res)=>{
     const {ownerId} = req.params;
     const {nickname, brand, model, year, img, metric, kms} = req.body;
     try {

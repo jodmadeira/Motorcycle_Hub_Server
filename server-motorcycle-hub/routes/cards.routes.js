@@ -33,15 +33,16 @@ router.get('/marketplace/:cardId', async(req,res)=>{
 
 
 // Create new Card (offer or request);
-router.post('/marketplace/create', async (req,res)=>{
-    const {ownerId} = req.payload._id;
-    const {cardType, contentType, title, description, img, link, price} = req.body
+router.post('/marketplace/create/', async (req,res)=>{
+    const {cardType, contentType, title, description, img, link, price, owner} = req.body
     try {
-        let createCard = await Cards.create({cardType, contentType, title, description, img, link, price});
+        
+        let createCard = await Cards.create({cardType, contentType, title, description, img, link, price, owner});
         res.json(createCard)
-        await User.findByIdAndUpdate(ownerId, {$push:{cards:createdCard._id}})
+        await User.findByIdAndUpdate(owner, {$push:{cards:createCard._id}})
     }
     catch(error) {
+        console.log('Error posting card on DB', error)
         res.json(error)
     }
 });
