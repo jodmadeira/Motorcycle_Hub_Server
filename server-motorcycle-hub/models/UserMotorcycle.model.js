@@ -23,7 +23,6 @@ const userMotorcycleSchema = new Schema(
         },
         ownerId:{
             type: String,
-           
             required: [true, "UserId is required."],
         },
         img:{
