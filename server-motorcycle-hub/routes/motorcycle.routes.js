@@ -60,7 +60,7 @@ const motorcycleMakers =["Honda","Kawasaki","Harley-Davidson","Indian","KTM","Hu
                         modelImage="https://as.sobrenet.pt/s/image/tsr/brandm/product/1920x1280/af1tu1nb2cgqla3q5zzb4ccbbm3.png"
                         break; 
                         
-                    case "CB650R":
+                    case "CBR650R":
                         modelImage="https://as.sobrenet.pt/s/image/tsr/brandm/product/1920x1280/szlakb00zolwuwa3z4ydonoyoq3.png"
                         break;
 
@@ -97,7 +97,7 @@ const motorcycleMakers =["Honda","Kawasaki","Harley-Davidson","Indian","KTM","Hu
                         break;
                     
                     //IF NOT FOUND
-                    default:modelImage="https://www.clipartmax.com/png/middle/224-2240358_motorcycle-vehicle-icon-motorbike-icon.png" ;
+                    default:modelImage="https://freesvg.org/img/motorcycleicon.png" ;
                 } 
  
 
