@@ -119,7 +119,7 @@ const motorcycleMakers =["Honda","Kawasaki","Harley-Davidson","Indian","KTM","Hu
                     rearTire: motorcycle.rear_tire,
                     frontBrakes: motorcycle.front_brakes,
                     rearBrakes: motorcycle.rear_brakes,
-                    weight: motorcycle.dry_weight,
+                    weight: motorcycle.total_weight,
                     height: motorcycle.seat_height
                 })
             }
