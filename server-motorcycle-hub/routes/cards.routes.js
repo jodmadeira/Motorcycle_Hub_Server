@@ -10,7 +10,8 @@ const User = require ('../models/User.model');
 router.get('/marketplace', async (req, res)=>{
     console.log('/marketplace',req.params)
     try {
-        let getAllCards = await Cards.find();
+        let getAllCards = await Cards.find().populate('owner');
+        console.log('SERVER getAllCards',getAllCards)
         res.json(getAllCards)
     } 
     catch (error) {
@@ -21,7 +22,8 @@ router.get('/marketplace', async (req, res)=>{
 //Get a specific Card
 router.get('/marketplace/:cardId', async(req,res)=>{
     const {cardId} = req.params;
-    console.log('/:cardId',req.params)
+    console.log(cardId)
+    
     try {
         let getCard = await Cards.findById(cardId);
         res.json(getCard);
@@ -50,7 +52,7 @@ router.post('/marketplace/create/', async (req,res)=>{
 
 // Update a User Card (offer or request);
 router.put('/marketplace/edit/:cardId', async(req,res)=>{
-    const {cardId}=req.payload._id;
+    const {cardId}=req.params;
     const {cardType, contentType, title, description, img, link, price} = req.body
    
     try {
