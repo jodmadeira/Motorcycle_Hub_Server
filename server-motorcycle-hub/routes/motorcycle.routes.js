@@ -20,84 +20,84 @@ const motorcycleMakers =["Honda","Kawasaki","Harley-Davidson","Indian","KTM","Hu
             
             for(let motorcycle of motorcycleData){
                     
-                let logo = "./public/images/brand/Default_Icon.png";
+                let logo = "";
                 switch (brand){
                     case "Kawasaki":
-                        logo="./public/images/brand/Kawasaki.png"
+                        logo="http://motorcycle-brands.com/wp-content/uploads/2016/08/Kawasaki-logo.png"
                         break;                        
                     case "Honda":
-                        logo="./public/images/brand/Honda.png"
+                        logo="http://motorcycle-brands.com/wp-content/uploads/2017/07/symbol-of-Honda.jpg"
                         break;
                     case "Harley-Davidson":
-                        logo="./public/images/brand/Harley_Davidson.png"
+                        logo="http://motorcycle-brands.com/wp-content/uploads/2016/07/logo-harley-davidson.png"
                         break;
                     case "Indian":
-                        logo="./public/images/brand/Indian_Motorcycle.png"
+                        logo="http://motorcycle-brands.com/wp-content/uploads/2017/10/indian-logo.png"
                         break;
                     case "KTM":
-                        logo="./public/images/brand/KTM.png"
+                        logo="http://motorcycle-brands.com/wp-content/uploads/2016/08/KTM-logo.png"
                         break;
                     case "Husqvarna":
-                        logo="./public/images/brand/Husqvarna.png"
+                        logo="http://motorcycle-brands.com/wp-content/uploads/2016/08/Husqvarna-logo.png"
                         break;
                     
-                    default:logo="./public/images/brand/Default_Icon.png" ;
+                    default:logo="https://cdn-icons-png.flaticon.com/512/5229/5229534.png" ;
                 };
                 
-                let modelImage='./public/images/brand/Default_Icon.png';
+                let modelImage='';
                 switch (motorcycle.model){
 
                     //HARLEY_DAVIDSON
                     case "Pan America 1250":
-                        modelImage="./public/images/models/HD_PAN_AMERICA.jpg"
+                        modelImage="https://www.harley-davidson.com/content/dam/h-d/images/product-images/bikes/motorcycle/2023/2023-pan-america-1250/2023-pan-america-1250-010/360/2023-pan-america-1250-010-motorcycle-01.jpg?impolicy=myresize&rw=1600"
                         break;                        
                     case "Sportster S":
-                        modelImage="./public/images/models/HD_SPORTSTER.jpg"
+                        modelImage="https://www.harley-davidson.com/content/dam/h-d/images/product-images/bikes/motorcycle/2023/2023-sportster-s/2023-sportster-s-f89/360/2023-sportster-s-f89-motorcycle-01.jpg?impolicy=myresize&rw=1600"
                         break; 
 
                     //HONDA
                     case "Africa Twin":
-                        modelImage="./public/images/models/HONDA_AFRICA_TWIN.jpg"
+                        modelImage="https://as.sobrenet.pt/s/image/tsr/brandm/product/1920x1280/af1tu1nb2cgqla3q5zzb4ccbbm3.png"
                         break; 
                         
                     case "CB650R":
-                        modelImage="./public/images/models/HONDA_CBR650R.jpg"
+                        modelImage="https://as.sobrenet.pt/s/image/tsr/brandm/product/1920x1280/szlakb00zolwuwa3z4ydonoyoq3.png"
                         break;
 
                     //HUSQVARNA
                     case "701 Enduro":
-                        modelImage="./public/images/models/HQV_701_ENDURO.jpg"
+                        modelImage="https://as.sobrenet.pt/s/image/tsr/brandm/product/1536x1152/dd52whr1ji1xcdbjs1vljj5ykm3.png"
                         break;
                     case "FE 450":
-                        modelImage="./public/images/models/HQV_FE_450.jpg"
+                        modelImage="https://as.sobrenet.pt/s/image/tsr/brandm/product/1536x1152/5tjmkcqod5t1ypavpw0na4ruki3.png"
                         break;
 
                     //INDIAN
                     case "Chieftain Dark Horse":
-                        modelImage="./public/images/models/INDIAN_CHIEFTAIN_DH.jpg"
+                        modelImage="https://www.indianmotorcycle.pt/fileadmin/templates/model_23/swap/intl/chieftain-dark-horse/chieftain-dh-black-smoke.jpg"
                         break;
                      case "Scout Bobber":
-                        modelImage="./public/images/models/INDIAN_SCOUT_BOBBER.jpg"
+                        modelImage="https://www.indianmotorcycle.pt/fileadmin/templates/model_23/swap/intl/scout-bobber/scout-bobber-blacksmoke.jpg"
                         break; 
 
                     //KAWASAKI
                     case "Ninja ZX-10R":
-                        modelImage="./public/images/models/KAWASAKI_NINJA_ZX10R.png"
+                        modelImage="https://storage.kawasaki.eu/public/kawasaki.eu/en-EU/model/23MY_Ninja%20ZX-10R_GN1_STU%20(1).002.png"
                         break; 
                      case "Versys 650 Grand Tourer":
-                        modelImage="./public/images/models/KAWASAKI_VERSYS_650_GT.png"
+                        modelImage="https://storage.kawasaki.eu/public/kawasaki.eu/en-EU/model/23MY_Versys%20650%20Grand%20Tourer_GN1_Front.002.png"
                         break; 
 
                     //KTM
                     case "450 Rally Replica":
-                        modelImage="./public/images/models/KTM_450_RALLY.png"
+                        modelImage="https://www.racespec.pt/wp-content/uploads/2021/07/KTM-450-RALLY-FACTORY-REPLICA-2022.png"
                         break;
                     case "1290 Super Duke GT":
-                        modelImage="./public/images/models/KTM_1290_SUPERDUKE_GT.jpg"
+                        modelImage="https://as.sobrenet.pt/s/image/tsr/brandm/product/1536x1152/qxaulhbzelrgk24kjwatekywam3.png"
                         break;
                     
                     //IF NOT FOUND
-                    default:modelImage="./public/images/brand/Default_Icon.png" ;
+                    default:modelImage="https://www.clipartmax.com/png/middle/224-2240358_motorcycle-vehicle-icon-motorbike-icon.png" ;
                 } 
  
 
