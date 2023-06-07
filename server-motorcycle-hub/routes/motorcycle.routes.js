@@ -51,7 +51,7 @@ const motorcycleMakers =["Honda","Kawasaki","Harley-Davidson","Indian","KTM","Hu
                     case "Pan America 1250":
                         modelImage="https://www.harley-davidson.com/content/dam/h-d/images/product-images/bikes/motorcycle/2023/2023-pan-america-1250/2023-pan-america-1250-010/360/2023-pan-america-1250-010-motorcycle-01.jpg?impolicy=myresize&rw=1600"
                         break;                        
-                    case "Sportster S":
+                    case "Sportster S ":
                         modelImage="https://www.harley-davidson.com/content/dam/h-d/images/product-images/bikes/motorcycle/2023/2023-sportster-s/2023-sportster-s-f89/360/2023-sportster-s-f89-motorcycle-01.jpg?impolicy=myresize&rw=1600"
                         break; 
 
@@ -65,8 +65,8 @@ const motorcycleMakers =["Honda","Kawasaki","Harley-Davidson","Indian","KTM","Hu
                         break;
 
                     //HUSQVARNA
-                    case "701 Enduro":
-                        modelImage="https://as.sobrenet.pt/s/image/tsr/brandm/product/1536x1152/dd52whr1ji1xcdbjs1vljj5ykm3.png"
+                    case "TE 300i Rockstar":
+                        modelImage="https://press.husqvarna-motorcycles.com/Content/548514/c98b98e1-f0aa-49bd-8dad-8f0609e0b467/1200/2400/.jpg"
                         break;
                     case "FE 450":
                         modelImage="https://as.sobrenet.pt/s/image/tsr/brandm/product/1536x1152/5tjmkcqod5t1ypavpw0na4ruki3.png"
@@ -119,7 +119,7 @@ const motorcycleMakers =["Honda","Kawasaki","Harley-Davidson","Indian","KTM","Hu
                     rearTire: motorcycle.rear_tire,
                     frontBrakes: motorcycle.front_brakes,
                     rearBrakes: motorcycle.rear_brakes,
-                    weight: motorcycle.dry_weight,
+                    weight: motorcycle.total_weight,
                     height: motorcycle.seat_height
                 })
             }
