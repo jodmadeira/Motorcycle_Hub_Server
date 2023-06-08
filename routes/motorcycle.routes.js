@@ -23,22 +23,22 @@ const motorcycleMakers =["Honda","Kawasaki","Harley-Davidson","Indian","KTM","Hu
                 let logo = "";
                 switch (brand){
                     case "Kawasaki":
-                        logo="http://motorcycle-brands.com/wp-content/uploads/2016/08/Kawasaki-logo.png"
+                        logo="https://motorcycle-brands.com/wp-content/uploads/2016/08/Kawasaki-logo.png"
                         break;                        
                     case "Honda":
-                        logo="http://motorcycle-brands.com/wp-content/uploads/2017/07/symbol-of-Honda.jpg"
+                        logo="https://motorcycle-brands.com/wp-content/uploads/2017/07/symbol-of-Honda.jpg"
                         break;
                     case "Harley-Davidson":
-                        logo="http://motorcycle-brands.com/wp-content/uploads/2016/07/logo-harley-davidson.png"
+                        logo="https://motorcycle-brands.com/wp-content/uploads/2016/07/logo-harley-davidson.png"
                         break;
                     case "Indian":
-                        logo="http://motorcycle-brands.com/wp-content/uploads/2017/10/indian-logo.png"
+                        logo="https://motorcycle-brands.com/wp-content/uploads/2017/10/indian-logo.png"
                         break;
                     case "KTM":
-                        logo="http://motorcycle-brands.com/wp-content/uploads/2016/08/KTM-logo.png"
+                        logo="https://motorcycle-brands.com/wp-content/uploads/2016/08/KTM-logo.png"
                         break;
                     case "Husqvarna":
-                        logo="http://motorcycle-brands.com/wp-content/uploads/2016/08/Husqvarna-logo.png"
+                        logo="https://motorcycle-brands.com/wp-content/uploads/2016/08/Husqvarna-logo.png"
                         break;
                     
                     default:logo="https://cdn-icons-png.flaticon.com/512/5229/5229534.png" ;
